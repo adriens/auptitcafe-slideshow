@@ -1,4 +1,5 @@
 import Papa, { ParseError } from "papaparse";
+import Papa, { ParseError } from "papaparse/node";
 import Slideshow from "@/components/Slideshow";
 
 interface MenuItem {
