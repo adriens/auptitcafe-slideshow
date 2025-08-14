@@ -25,7 +25,7 @@ async function getMenuData(): Promise<MenuItem[]> {
         complete: (results: ParseResult<MenuItem>) => {
           resolve(results.data as MenuItem[]);
         },
-        error: (error: ParseError) => {
+        error: (error: Error) => {
           reject(error);
         },
       });
