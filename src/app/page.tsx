@@ -1,4 +1,4 @@
-import Papa from "papaparse";
+import Papa, { ParseError } from "papaparse";
 import Slideshow from "@/components/Slideshow";
 
 interface MenuItem {
@@ -25,7 +25,7 @@ async function getMenuData(): Promise<MenuItem[]> {
         complete: (results) => {
           resolve(results.data as MenuItem[]);
         },
-        error: (error) => {
+        error: (error: ParseError) => {
           reject(error);
         },
       });
