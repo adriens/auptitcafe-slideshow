@@ -1,4 +1,4 @@
-import Papa, { ParseError } from "papaparse";
+// Removed duplicate import
 import Papa, { ParseError } from "papaparse/node";
 import Slideshow from "@/components/Slideshow";
 
@@ -23,7 +23,7 @@ async function getMenuData(): Promise<MenuItem[]> {
       Papa.parse(csvText, {
         header: true,
         skipEmptyLines: true,
-        complete: (results) => {
+  complete: (results: Papa.ParseResult<MenuItem>) => {
           resolve(results.data as MenuItem[]);
         },
         error: (error: ParseError) => {
