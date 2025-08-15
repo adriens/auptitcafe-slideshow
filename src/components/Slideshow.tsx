@@ -16,6 +16,19 @@ interface SlideshowProps {
 }
 
 const Slideshow: React.FC<SlideshowProps> = ({ items }) => {
+  // Restaurant info slide data
+  const restaurantInfo = {
+    titre: "Au P'tit Café",
+    horaires: [
+      "Lundi au vendredi: de 11h00 à 13h30",
+      "Mercredi au vendredi: de 18h30 à 21h00",
+    ],
+    telephone: "28.21.89",
+    website: "http://auptitcafe.nc/",
+    facebook: "https://www.facebook.com/auptitcafe.nc",
+    instagram: "https://www.instagram.com/auptitcafe.nc/",
+  };
+
   return (
     <div className="w-full h-screen bg-black text-white overflow-hidden">
       <Swiper
@@ -32,6 +45,42 @@ const Slideshow: React.FC<SlideshowProps> = ({ items }) => {
         }}
         className="w-full h-full"
       >
+        {/* Restaurant Info Slide */}
+        <SwiperSlide className="box-border flex flex-col items-center justify-center text-center w-full h-full p-4">
+          <div className="w-full max-w-4xl pt-5 flex flex-col justify-center items-center text-[28px] lg:text-[36px] bg-gradient-to-br from-green-900 via-black to-gray-900 rounded-3xl shadow-2xl p-10 border border-green-700">
+            <img src="/logo-auptit-cafe.png" alt="Logo Au P'tit Café" className="mb-6 w-40 h-40 object-contain drop-shadow-xl" />
+            <div className="mb-6">
+              
+              <div className="w-full flex flex-col items-start">
+                {restaurantInfo.horaires.map((h, i) => (
+                  <p key={i} className="text-[28px] lg:text-[36px] text-gray-200 mb-2 text-left w-full">{h}</p>
+                ))}
+              </div>
+            </div>
+            <div className="mb-6">
+              <p className="text-[28px] lg:text-[36px] text-gray-200 mb-2">{restaurantInfo.telephone}</p>
+            </div>
+            <div className="mb-6">
+              <a href={restaurantInfo.website} target="_blank" rel="noopener noreferrer" className="text-blue-400 underline text-[28px] lg:text-[36px] mb-2">
+                {restaurantInfo.website}
+              </a>
+            </div>
+            <div className="mb-6">
+              <div className="flex flex-col gap-2 items-center">
+                <a href={restaurantInfo.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-blue-400 underline text-[28px] lg:text-[36px]">
+                  <img src="/facebook.svg" alt="Facebook" style={{ width: '20px', height: '20px', display: 'inline' }} />
+                  Facebook
+                </a>
+                <a href={restaurantInfo.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-pink-400 underline text-[28px] lg:text-[36px]">
+                  <img src="/instagram.svg" alt="Instagram" style={{ width: '20px', height: '20px', display: 'inline' }} />
+                  Instagram
+                </a>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+
+        {/* Existing menu slides */}
         {items.map((item, index) => (
           <SwiperSlide
             key={index}
